@@ -1,0 +1,98 @@
+[user]
+  name = Jack Lewis
+  email = rhinoceraptor@gmail.com
+
+[alias]
+  # Add
+  a = add
+  aa = add -A
+
+  # Branch
+  b = branch
+
+  # Commit
+  c = commit
+  cm = commit -m
+  ca = commit --amend -m
+
+  # Checkout
+  co = checkout
+  cb = checkout -b
+
+  # Clone
+  cl = clone
+
+  # Cherry-pick
+  cp = cherry-pick
+
+  # Diff
+  d = diff
+
+  # List
+  tl = tag -l
+  bl = branch -a
+  rl = remote -v
+
+  # Status
+  s = status -s
+
+  # Pull
+  pl   = pull
+  plo  = pull --rebase origin
+  plom = pull --rebase origin master
+  plog = pull --rebase origin gh-pages
+  plu  = pull --rebase upstream
+  plum = pull --rebase upstream master
+  plug = pull --rebase upstream gh-pages
+
+  # Push
+  ps   = push
+  pso  = push origin
+  psom = push origin master
+  psog = push origin gh-pages
+  psu  = push upstream
+  psum = push upstream master
+  psug = push upstream gh-pages
+
+  # Remote
+  ra  = remote add
+  rao = remote add origin
+  rau = remote add upstream
+  rs  = remote set-url
+  rso = remote set-url origin
+  rsu = remote set-url upstream
+  rem = remote remove
+  remo = remote remove origin
+
+  # Logs
+  l  = log --pretty=oneline --decorate --abbrev-commit --max-count=15
+  ll = log --graph --pretty=format:'%Cred%h%Creset %an: %s %Creset%Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  ls = log --oneline --graph
+
+  # Sync
+  sync = plu && pso
+
+[color]
+  diff = auto
+  status = auto
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added   = cyan bold
+  branch  = cyan bold
+  changed   = magenta bold
+  deleted   = red bold
+  untracked = yellow bold
+
+[push]
+  default = current
+
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+
