@@ -5,7 +5,6 @@ stow zsh
 stow vim
 stow git
 stow tmux
-stow inputrc
 
 # Clone various package managers from git
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

@@ -52,7 +52,7 @@ clear-screen() clear
 bindkey '^o' clear-screen
 
 # Load antigen
-source ~/git/conf/antigen/antigen.zsh
+source ~/.zsh/antigen/antigen.zsh
 
 # Antigen packages
 antigen-bundle extract
