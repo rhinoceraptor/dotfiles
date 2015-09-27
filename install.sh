@@ -6,6 +6,11 @@ stow vim
 stow git
 stow tmux
 
+# Create .vim directories
+mkdir -p ~/.vim/bundle/
+mkdir -p ~/.vim/tmp/swp
+mkdir -p ~/.vim/tmp/undo
+
 # Clone various package managers from git
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/zsh-users/antigen.git ~/.zsh/antigen/
