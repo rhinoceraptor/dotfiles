@@ -5,6 +5,7 @@ stow zsh
 stow vim
 stow git
 stow tmux
+stow config
 
 # Create .vim directories
 mkdir -p ~/.vim/bundle/
@@ -15,6 +16,9 @@ mkdir -p ~/.vim/tmp/undo
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/zsh-users/antigen.git ~/.zsh/antigen/
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Install vim packages
+vim +PluginInstall +qall
 
 # Source the gnome terminal colors
 source gnome_term_colors.sh

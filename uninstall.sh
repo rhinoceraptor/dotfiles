@@ -5,6 +5,7 @@ stow -D zsh
 stow -D vim
 stow -D git
 stow -D tmux
+stow -D config
 
 # remove various package managers
 rm -rf ~/.vim/bundle/Vundle.vim
