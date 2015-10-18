@@ -5,7 +5,7 @@
 "------------------------"
 " General editor settings"
 "------------------------"
-"
+
 " Convenient whitespace marking
 set list
 set listchars=tab:>\ ,eol:¬
@@ -15,37 +15,54 @@ set mouse=a
 
 "Set tab display width to 2 spaces
 set tabstop=2
-
 set expandtab
+
+" Search preferences
+set incsearch
 set hlsearch
+
 set laststatus=2
 set matchtime=1
-set mouse=a
 set nocompatible
+
 " Line numbers
 set number
-set omnifunc=syntaxcomplete#Complete
-set scrolloff=10
+
+" General indent settings
 set shiftwidth=8
-set showmatch
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set tabstop=4
-set ttyfast
-set ttymouse=xterm2
 set smartindent
 set shiftwidth=2
+
+set omnifunc=syntaxcomplete#Complete
+set scrolloff=10
+set showmatch
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set ttyfast
+set ttymouse=xterm2
 set lazyredraw
-set incsearch
+
 " Press F2 to paste without messing up indentation
 set pastetoggle=<F2>
-
 setlocal shiftwidth=4
+
+" Look for indent style in ~/.vim/indent/
+filetype indent on
+
+" Save the file scroll location
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
 " Fix time out length to not wait excessively long switching to normal mode
 set timeoutlen=1000 ttimeoutlen=0
 
+" Show possible files to edit using :e tab completion
+set wildmenu
+
 " Use :sudow to write use sudo to write a file
 cnoremap sudow w !sudo tee % >/dev/null
+
+" highlight last inserted text
+nnoremap gV `[v`]
 
 " Show NERDTree automatically in the pwd if vim called with no arguments
 function! StartUp()
@@ -56,8 +73,15 @@ endfunction
 autocmd VimEnter * call StartUp()
 let NERDTreeShowHidden=1
 
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
 " Turn off search highlight - backslash space
 nnoremap <leader><space> :nohlsearch<CR>
+
 " Turn off skipping folded lines vertically
 nnoremap j gj
 nnoremap k gk
@@ -67,6 +91,16 @@ augroup Misc
     autocmd!
     autocmd VimResized * exe "normal! \<c-w>="
 augroup END
+
+" Open splits the right way
+set splitbelow
+set splitright
+
+" Resize splits
+nnoremap <C-w>k 5<C-w>-
+nnoremap <C-w>j 5<C-w>+
+nnoremap <C-w>h 5<C-w><
+nnoremap <C-w>l 5<C-w>>
 
 " Automatically strip trailing whitespace on write
 autocmd BufWritePre * :%s/\s\+$//e
@@ -82,7 +116,10 @@ set dir=~/.vim/tmp/swp//
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Wq wq
+cnoreabbrev wQ wq
 cnoreabbrev WQ wq
+cnoreabbrev WQa wqa
+cnoreabbrev Wqa wqa
 
 "-----------------"
 " Vundle settings "
@@ -112,6 +149,8 @@ Bundle 'ntpeters/vim-better-whitespace'
 Plugin 'itchyny/lightline.vim'
 " Tmux/Vim helper
 Plugin 'christoomey/vim-tmux-navigator'
+" CtrlP
+Bundle 'kien/ctrlp.vim'
 
 "-----------------------"
 " Autocomplete packages "
@@ -126,9 +165,17 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'tmux-plugins/vim-tmux'
 " ES6
 Plugin 'othree/yajs.vim'
-
+" Jade templates
+Plugin 'digitaltoad/vim-jade'
+" Handlebars templates
+Plugin 'mustache/vim-mustache-handlebars'
+" Stylus
+Plugin 'wavded/vim-stylus'
+" Ansible
+Plugin 'chase/vim-ansible-yaml'
 
 call vundle#end()
+
 "----------------"
 " Color settings "
 "----------------"

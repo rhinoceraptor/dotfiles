@@ -1,0 +1,43 @@
+
+# General command line aliases
+alias open="xdg-open >/dev/null 2>&1"
+alias sl="ls"
+alias sl="l"
+alias ls="ls --color=auto --group-directories-first -lA"
+alias ivm="vim"
+alias v="vim"
+alias t="tree ."
+alias subl="subl >/dev/null 2>&1"
+alias c="clear"
+alias copy="xclip -sel clip <"
+alias s="sudo"
+alias ss="sudo su"
+
+# Docker Aliases
+alias dps="docker ps"
+alias di="docker images"
+alias ds="docker save"
+alias drm="docker rm"
+alias dk="docker kill"
+alias dr="docker run"
+alias dpush="docker push"
+alias dpu="docker pull"
+
+# Package manager aliases
+alias ag="sudo apt-get"
+alias agi="sudo apt-get install"
+alias agui="sudo sh -c 'apt-get update; apt-get install'"
+alias agr="sudo apt-get remove"
+alias ags="apt-cache search"
+alias agu="sudo apt-get update"
+alias aguu="sudo sh -c 'apt-get update && apt-get upgrade'"
+
+alias pc="pacman"
+alias pcs="sudo pacman -S"
+alias pcsy="sudo pacman -Syyu"
+alias pcss="pacman -Ss"
+
+alias npmi="npm install"
+alias npmis="npm install --save"
+alias npmg="sudo npm install -g"
+

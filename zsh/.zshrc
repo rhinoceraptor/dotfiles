@@ -1,4 +1,3 @@
-
 # Colors
 export TERM='xterm-256color'
 
@@ -15,6 +14,8 @@ HISTSIZE=2000
 HISTSAVE=2000
 SAVEHIST=HISTSIZE
 
+DISABLE_CORRECTION="true"
+
 # Various ZSH settings
 setopt BANG_HIST
 setopt EXTENDED_HISTORY
@@ -27,15 +28,6 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
-
-# OS X like open command using xdg-open
-alias open="xdg-open >/dev/null 2>&1"
-alias sl="ls"
-alias ls="ls --color=auto --group-directories-first -lA"
-alias ivm="vim"
-alias v="vim"
-alias subl="subl >/dev/null 2>&1"
-alias c="clear"
 
 # Use vi mode in ZLE
 bindkey -v
@@ -51,6 +43,12 @@ KEYTIMEOUT=1
 clear-screen() clear
 bindkey '^o' clear-screen
 
+# Load Ruby paths
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+# Load aliases
+source ~/.zsh_aliases
+
 # Load antigen
 source ~/.zsh/antigen/antigen.zsh
 
@@ -65,5 +63,7 @@ antigen-bundle tmuxinator
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle felixr/docker-zsh-completion
 
 antigen apply
+
