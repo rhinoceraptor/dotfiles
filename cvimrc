@@ -1,0 +1,10 @@
+map K previousTab
+map J nextTab
+set autohidecursor
+set noautofocus
+
+map { scrollUp
+map } scrollDown
+
+let scrollstep=600
+
