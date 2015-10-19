@@ -42,7 +42,10 @@ KEYTIMEOUT=1
 # Custom keybindings
 clear-screen() clear
 bindkey '^o' clear-screen
-
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
 # Load Ruby paths
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
@@ -52,18 +55,20 @@ source ~/.zsh_aliases
 # Load antigen
 source ~/.zsh/antigen/antigen.zsh
 
-# Antigen packages
+# Antigen (oh-my-zsh) packages
 antigen-bundle extract
 antigen-bundle git
 antigen-bundle pip
 antigen-bundle tmuxinator
+antigen bundle felixr/docker-zsh-completion
 
 # syntax highlighting must be last to prevent pwd
 # indicator from going off screen
+antigen bundle b4b4r07/zsh-vimode-visual
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle felixr/docker-zsh-completion
+antigen-bundle zsh-users/zsh-history-substring-search
 
 antigen apply
 

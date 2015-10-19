@@ -4,14 +4,17 @@ alias open="xdg-open >/dev/null 2>&1"
 alias sl="ls"
 alias sl="l"
 alias ls="ls --color=auto --group-directories-first -lA"
+alias ll='ls -lv --group-directories-first'
 alias ivm="vim"
 alias v="vim"
 alias t="tree ."
-alias subl="subl >/dev/null 2>&1"
+alias subl="subl >/dev/null 2>&1"                            # Open sublime text
 alias c="clear"
 alias copy="xclip -sel clip <"
 alias s="sudo"
 alias ss="sudo su"
+alias viminstall="vim +PluginInstall +qall"         # Install Vim vundle plugins
+alias copy='xclip -selection c'              # $ echo "copy to clipboard" | copy
 
 # Docker Aliases
 alias dps="docker ps"

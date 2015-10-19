@@ -30,7 +30,7 @@ set number
 
 " General indent settings
 set shiftwidth=8
-set tabstop=4
+set tabstop=2
 set smartindent
 set shiftwidth=2
 
@@ -86,6 +86,8 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap j gj
 nnoremap k gk
 
+" Show a ruler at 80 chars
+set colorcolumn=80
 " Auto resize splits after window resize
 augroup Misc
     autocmd!
@@ -171,8 +173,10 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'mustache/vim-mustache-handlebars'
 " Stylus
 Plugin 'wavded/vim-stylus'
+" JSX
+Plugin 'jsx/jsx.vim'
 " Ansible
-Plugin 'chase/vim-ansible-yaml'
+Bundle 'chase/vim-ansible-yaml'
 
 call vundle#end()
 

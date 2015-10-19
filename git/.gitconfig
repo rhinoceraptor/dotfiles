@@ -26,7 +26,9 @@
   cp = cherry-pick
 
   # Diff
-  d = diff
+  di = diff
+  dc = diff --cached
+  d = diff HEAD
 
   # List
   tl = tag -l
@@ -64,6 +66,10 @@
   rem = remote remove
   remo = remote remove origin
 
+  # Reset
+  r = reset
+
+
   # Logs
   l  = log --pretty=oneline --decorate --abbrev-commit --max-count=15
   ll = log --graph --pretty=format:'%Cred%h%Creset %an: %s %Creset%Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -93,6 +99,7 @@
   default = current
 
 [core]
+  preloadindex = true
   editor = vim
   excludesfile = ~/.gitignore_global
 
