@@ -177,15 +177,16 @@ Plugin 'wavded/vim-stylus'
 Plugin 'jsx/jsx.vim'
 " Ansible
 Bundle 'chase/vim-ansible-yaml'
+" Markdown
+Plugin 'tpope/vim-markdown'
 
 call vundle#end()
 
 "----------------"
+
 " Color settings "
 "----------------"
 syntax enable
 set background=dark
 colorscheme PaperColor
 let g:lightline = { 'colorscheme': 'PaperColor' }
-
-
