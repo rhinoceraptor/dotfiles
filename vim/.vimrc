@@ -44,7 +44,11 @@ set lazyredraw
 
 " Press F2 to paste without messing up indentation
 set pastetoggle=<F2>
-setlocal shiftwidth=4
+setlocal shiftwidth=2
+
+set clipboard=unnamedplus
+" Y yanks to system clipboard
+"vnoremap <C-c> :w !xsel --clipboard<CR><CR>
 
 " Look for indent style in ~/.vim/indent/
 filetype indent on
@@ -64,6 +68,9 @@ cnoremap sudow w !sudo tee % >/dev/null
 " highlight last inserted text
 nnoremap gV `[v`]
 
+"-------------------"
+" NERDTree settings "
+"-------------------"
 " Show NERDTree automatically in the pwd if vim called with no arguments
 function! StartUp()
     if 0 == argc()
@@ -73,11 +80,17 @@ endfunction
 autocmd VimEnter * call StartUp()
 let NERDTreeShowHidden=1
 
-" CtrlP settings
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
+"----------------"
+" CtrlP settings "
+"----------------"
+" Set no max file limit
+let g:ctrlp_max_files = 0
+" Search from current directory instead of project root
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" Work on buffertags, tags, lines, and directories
+let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+" Order matches top to botton (ttb)
+let g:ctrlp_match_window = 'bottom,order:ttb'
 
 " Turn off search highlight - backslash space
 nnoremap <leader><space> :nohlsearch<CR>
@@ -107,6 +120,11 @@ nnoremap <C-w>l 5<C-w>>
 " Automatically strip trailing whitespace on write
 autocmd BufWritePre * :%s/\s\+$//e
 
+let g:NERDTreeChDirMode       = 2
+let g:ctrlp_working_path_mode = 'rw'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+
 " Save undo and swp in a convenient location
 set undofile
 set undodir=~/.vim/tmp/undo//
@@ -122,6 +140,8 @@ cnoreabbrev wQ wq
 cnoreabbrev WQ wq
 cnoreabbrev WQa wqa
 cnoreabbrev Wqa wqa
+cnoreabbrev Qa qa
+cnoreabbrev QA qa
 
 "-----------------"
 " Vundle settings "
@@ -153,6 +173,8 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 " CtrlP
 Bundle 'kien/ctrlp.vim'
+" Editor Config
+Plugin 'editorconfig/editorconfig-vim'
 
 "-----------------------"
 " Autocomplete packages "

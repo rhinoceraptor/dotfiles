@@ -27,13 +27,13 @@ alias dpush="docker push"
 alias dpu="docker pull"
 
 # Package manager aliases
-alias ag="sudo apt-get"
+alias agt="sudo apt-get"
 alias agi="sudo apt-get install"
-alias agui="sudo sh -c 'apt-get update; apt-get install'"
+alias agui="sudo sh -c 'apt-get update; apt-get -y install'"
 alias agr="sudo apt-get remove"
-alias ags="apt-cache search"
+alias acs="apt-cache search"
 alias agu="sudo apt-get update"
-alias aguu="sudo sh -c 'apt-get update && apt-get upgrade'"
+alias aguu="sudo sh -c 'apt-get update && apt-get -y upgrade'"
 
 alias pc="pacman"
 alias pcs="sudo pacman -S"
