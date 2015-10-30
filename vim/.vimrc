@@ -12,7 +12,6 @@ set listchars=tab:>\ ,eol:¬
 
 " Enable mouse
 set mouse=a
-
 "Set tab display width to 2 spaces
 set tabstop=2
 set expandtab
@@ -79,6 +78,15 @@ function! StartUp()
 endfunction
 autocmd VimEnter * call StartUp()
 let NERDTreeShowHidden=1
+
+" Bookmarks
+let NERDTreeShowBookmarks=1
+if !empty($NERDTREE_BOOKMARKS)
+  if filereadable($NERDTREE_BOOKMARKS)
+    let g:NERDTreeBookmarksFile = $NERDTREE_BOOKMARKS
+  endif
+endif
+nmap <silent> <F3> :NERDTreeToggle<CR>
 
 "----------------"
 " CtrlP settings "

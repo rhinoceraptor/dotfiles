@@ -41,6 +41,7 @@ alias pcsy="sudo pacman -Syyu"
 alias pcss="pacman -Ss"
 
 alias npmi="npm install"
+alias npmi="npm install --save-dev"
 alias npmis="npm install --save"
 alias npmg="sudo npm install -g"
 

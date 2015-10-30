@@ -52,7 +52,9 @@ bindkey '^N' history-substring-search-down
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export NVM_DIR="/home/jack/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-PURE_PROMPT_SYMBOL=⚡
+
+# NERDTree bookmarks
+export NERDTREE_BOOKMARKS="~/.vim/.NERDTreeBookmarks"
 
 # Load aliases
 source ~/.zsh/aliases
