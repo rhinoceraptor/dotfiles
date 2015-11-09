@@ -157,6 +157,8 @@ Plugin 'junegunn/seoul256.vim'
 "-------------------------"
 " Git integration
 Plugin 'tpope/vim-fugitive'
+" Save sessions
+Plugin 'tpope/vim-obsession'
 " Toggle mouse focus b/t vim and terminal emulator with F12
 Bundle 'nvie/vim-togglemouse'
 " Syntax checker
