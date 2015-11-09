@@ -122,6 +122,12 @@ set undofile
 set undodir=~/.vim/tmp/undo//
 set dir=~/.vim/tmp/swp//
 
+"-----"
+" FZF "
+"-----"
+set rtp+=~/.fzf
+nnoremap <C-p> :FZF<cr>
+
 "-----------------"
 " Command aliases "
 "-----------------"
@@ -165,6 +171,9 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 " Editor Config
 Plugin 'editorconfig/editorconfig-vim'
+" FZF
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 "-----------------------"
 " Autocomplete packages "
