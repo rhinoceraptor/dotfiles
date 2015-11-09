@@ -38,7 +38,6 @@ set scrolloff=10
 set showmatch
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set ttyfast
-set ttymouse=xterm2
 set lazyredraw
 
 " Press F2 to paste without messing up indentation
@@ -88,18 +87,6 @@ if !empty($NERDTREE_BOOKMARKS)
 endif
 nmap <silent> <F3> :NERDTreeToggle<CR>
 
-"----------------"
-" CtrlP settings "
-"----------------"
-" Set no max file limit
-let g:ctrlp_max_files = 0
-" Search from current directory instead of project root
-let g:ctrlp_working_path_mode = 0
-" Work on buffertags, tags, lines, and directories
-let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
-" Order matches top to botton (ttb)
-let g:ctrlp_match_window = 'bottom,order:ttb'
-
 " Turn off search highlight - backslash space
 nnoremap <leader><space> :nohlsearch<CR>
 
@@ -129,9 +116,6 @@ nnoremap <C-w>l 5<C-w>>
 autocmd BufWritePre * :%s/\s\+$//e
 
 let g:NERDTreeChDirMode       = 2
-let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
 
 " Save undo and swp in a convenient location
 set undofile
@@ -159,9 +143,9 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-" Material design theme
-Bundle 'NLKNguyen/papercolor-theme'
 
+" Seoul 256 color scheme
+Plugin 'junegunn/seoul256.vim'
 "-------------------------"
 " General editor packages "
 "-------------------------"
@@ -179,8 +163,6 @@ Bundle 'ntpeters/vim-better-whitespace'
 Plugin 'itchyny/lightline.vim'
 " Tmux/Vim helper
 Plugin 'christoomey/vim-tmux-navigator'
-" CtrlP
-Bundle 'kien/ctrlp.vim'
 " Editor Config
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -213,10 +195,14 @@ Plugin 'tpope/vim-markdown'
 call vundle#end()
 
 "----------------"
-
 " Color settings "
 "----------------"
 syntax enable
 set background=dark
-colorscheme PaperColor
-let g:lightline = { 'colorscheme': 'PaperColor' }
+let g:lightline = {
+  \ 'colorscheme': 'seoul256',
+  \ }
+colo seoul256
+let g:seoul256_background = 256
+
+

@@ -1,3 +1,4 @@
+" settings for cVim
 map K previousTab
 map J nextTab
 set autohidecursor

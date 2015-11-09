@@ -21,5 +21,5 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 vim +PluginInstall +qall
 
 # Source the gnome terminal colors
-source gnome_term_colors.sh
+source seoul.sh
 

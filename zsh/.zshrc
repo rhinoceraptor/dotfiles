@@ -28,6 +28,7 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
+setopt noflowcontrol
 
 # Use vi mode in ZLE
 bindkey -v
