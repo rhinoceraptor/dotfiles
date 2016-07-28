@@ -12,6 +12,7 @@ set listchars=tab:>\ ,eol:¬
 
 " Enable mouse
 set mouse=a
+set ttymouse=xterm2
 "Set tab display width to 2 spaces
 set tabstop=2
 set expandtab
@@ -40,11 +41,13 @@ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set ttyfast
 set lazyredraw
 
+set backspace=2
+
 " Press F2 to paste without messing up indentation
 set pastetoggle=<F2>
 setlocal shiftwidth=2
 
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 " Y yanks to system clipboard
 "vnoremap <C-c> :w !xsel --clipboard<CR><CR>
 
@@ -66,14 +69,18 @@ cnoremap sudow w !sudo tee % >/dev/null
 " highlight last inserted text
 nnoremap gV `[v`]
 
+" Don't get rid of selection when indenting
+xnoremap <  <gv
+xnoremap >  >gv
+
 "-------------------"
 " NERDTree settings "
 "-------------------"
 " Show NERDTree automatically in the pwd if vim called with no arguments
 function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
+  if 0 == argc()
+    NERDTree
+  end
 endfunction
 autocmd VimEnter * call StartUp()
 let NERDTreeShowHidden=1
@@ -117,6 +124,29 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 let g:NERDTreeChDirMode       = 2
 
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+"let g:NERDTreeIndicatorMapCustom = {
+"    \ "Modified"  : "🔸 ",
+"    \ "Staged"    : "✅  ",
+"    \ "Untracked" : "🆕  ",
+"    \ "Renamed"   : " ",
+"    \ "Unmerged"  : "🆙  ",
+"    \ "Deleted"   : "❌  ",
+"    \ "Dirty"     : "*️⃣" ,
+"    \ "Clean"     : "😀  ",
+"    \ "Unknown"   : "❗️  "
+"    \ }
+"
 " Save undo and swp in a convenient location
 set undofile
 set undodir=~/.vim/tmp/undo//
@@ -126,7 +156,7 @@ set dir=~/.vim/tmp/swp//
 " FZF "
 "-----"
 set rtp+=~/.fzf
-nnoremap <C-p> :FZF<cr>
+nnoremap <C-p> :FZF -m<cr>
 
 "-----------------"
 " Command aliases "
@@ -140,6 +170,38 @@ cnoreabbrev WQa wqa
 cnoreabbrev Wqa wqa
 cnoreabbrev Qa qa
 cnoreabbrev QA qa
+
+"------"
+" Tmux "
+"------"
+if exists('$TMUX')
+  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+    let previous_winnr = winnr()
+    silent! execute "wincmd " . a:wincmd
+    if previous_winnr == winnr()
+      call system("tmux select-pane -" . a:tmuxdir)
+      redraw!
+    endif
+  endfunction
+
+  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+
+  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+else
+  map <C-h> <C-w>h
+  map <C-j> <C-w>j
+  map <C-k> <C-w>k
+  map <C-l> <C-w>l
+endif
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 "-----------------"
 " Vundle settings "
@@ -157,14 +219,16 @@ Plugin 'junegunn/seoul256.vim'
 "-------------------------"
 " Git integration
 Plugin 'tpope/vim-fugitive'
+" Git gutter
+Plugin 'airblade/vim-gitgutter'
 " Save sessions
 Plugin 'tpope/vim-obsession'
 " Toggle mouse focus b/t vim and terminal emulator with F12
 Bundle 'nvie/vim-togglemouse'
-" Syntax checker
-Bundle 'scrooloose/syntastic'
 " File browser
 Plugin 'scrooloose/nerdtree.git'
+" Git integration for Nerd Tree
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Trailing whitespace is evil!
 Bundle 'ntpeters/vim-better-whitespace'
 " Status line
@@ -176,6 +240,7 @@ Plugin 'editorconfig/editorconfig-vim'
 " FZF
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'mileszs/ack.vim'
 
 "-----------------------"
 " Autocomplete packages "
@@ -189,19 +254,27 @@ Plugin 'kchmck/vim-coffee-script'
 " Tmux config files
 Plugin 'tmux-plugins/vim-tmux'
 " ES6
-Plugin 'othree/yajs.vim'
+Plugin 'isRuslan/vim-es6'
 " Jade templates
 Plugin 'digitaltoad/vim-jade'
 " Handlebars templates
 Plugin 'mustache/vim-mustache-handlebars'
 " Stylus
 Plugin 'wavded/vim-stylus'
-" JSX
-Plugin 'jsx/jsx.vim'
 " Ansible
 Bundle 'chase/vim-ansible-yaml'
 " Markdown
 Plugin 'tpope/vim-markdown'
+" Emoji
+Bundle 'junegunn/vim-emoji'
+" Swift
+Bundle 'keith/swift.vim'
+" Docker
+Bundle 'ekalinin/Dockerfile.vim'
+" ANTLR
+Bundle 'rollxx/vim-antlr'
+" Racket
+Bundle 'wlangstroth/vim-racket'
 
 call vundle#end()
 
@@ -215,5 +288,13 @@ let g:lightline = {
   \ }
 colo seoul256
 let g:seoul256_background = 256
+
+" : Git Gutter emoji config
+silent! if emoji#available()
+  let g:gitgutter_sign_added = emoji#for('white_check_mark')
+  let g:gitgutter_sign_modified = emoji#for('large_orange_diamond')
+  let g:gitgutter_sign_removed = emoji#for('x')
+  let g:gitgutter_sign_modified_removed = emoji#for('warning')
+endif
 
 

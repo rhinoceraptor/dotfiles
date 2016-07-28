@@ -1,20 +1,45 @@
+#!/usr/bin/env zsh
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias copy="pbcopy <"
+
+  alias docker-start="docker-machine start dev"
+  alias docker-stop="docker-machine stop dev"
+
+elif [[ "$(uname)" == "Linux" ]]; then
+  alias open="xdg-open >/dev/null 2>&1"
+  alias copy='xclip -selection c'              # $ echo "copy to clipboard" | copy
+
+# Package manager aliases
+  alias agt="sudo apt-get"
+  alias agi="sudo apt-get install"
+  alias agui="sudo sh -c 'apt-get update; apt-get -y install'"
+  alias agr="sudo apt-get remove"
+  alias acs="apt-cache search"
+  alias agu="sudo apt-get update"
+  alias aguu="sudo sh -c 'apt-get update && apt-get -y upgrade'"
+
+  alias pc="pacman"
+  alias pcs="sudo pacman -S"
+  alias pcsy="sudo pacman -Syyu"
+  alias pcss="pacman -Ss"
+fi
 
 # General command line aliases
-alias open="xdg-open >/dev/null 2>&1"
 alias sl="ls"
 alias sl="l"
-alias ls="ls --color=auto --group-directories-first -lA"
-alias ll='ls -lv --group-directories-first'
+alias ls="gls --color=auto --group-directories-first -lA"
 alias ivm="vim"
 alias v="vim"
 alias t="tree ."
 alias subl="subl >/dev/null 2>&1"                            # Open sublime text
 alias c="clear"
-alias copy="xclip -sel clip <"
 alias s="sudo"
 alias ss="sudo su"
 alias viminstall="vim +PluginInstall +qall"         # Install Vim vundle plugins
-alias copy='xclip -selection c'              # $ echo "copy to clipboard" | copy
+
+alias hack.exe="export GREP_COLOR='1;32'; cat /dev/urandom | hexdump -C | grep --color=auto \"ca fe\""
+alias myip="curl ifconfig.me"
 
 # Docker Aliases
 alias dps="docker ps"
@@ -23,25 +48,12 @@ alias ds="docker save"
 alias drm="docker rm"
 alias dk="docker kill"
 alias dr="docker run"
-alias dpush="docker push"
-alias dpu="docker pull"
-
-# Package manager aliases
-alias agt="sudo apt-get"
-alias agi="sudo apt-get install"
-alias agui="sudo sh -c 'apt-get update; apt-get -y install'"
-alias agr="sudo apt-get remove"
-alias acs="apt-cache search"
-alias agu="sudo apt-get update"
-alias aguu="sudo sh -c 'apt-get update && apt-get -y upgrade'"
-
-alias pc="pacman"
-alias pcs="sudo pacman -S"
-alias pcsy="sudo pacman -Syyu"
-alias pcss="pacman -Ss"
 
 alias npmi="npm install"
 alias npmi="npm install --save-dev"
 alias npmis="npm install --save"
 alias npmg="sudo npm install -g"
 
+alias netscan="sudo arp-scan --interface=en0 --localnet"
+
+alias bnode="babel-node --presets es2015"

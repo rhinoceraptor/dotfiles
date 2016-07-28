@@ -20,6 +20,3 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Install vim packages
 vim +PluginInstall +qall
 
-# Source the gnome terminal colors
-source seoul.sh
-

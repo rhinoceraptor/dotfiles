@@ -1,6 +1,6 @@
 [user]
   name = Jack Lewis
-  email = rhinoceraptor@gmail.com
+  email = jack@jacklew.is
 
 [alias]
   # Add
@@ -9,6 +9,7 @@
 
   # Branch
   b = branch
+  bd = branch -D
 
   # Commit
   c = commit
@@ -17,6 +18,7 @@
 
   # Checkout
   co = checkout
+  com = checkout master
   cb = checkout -b
 
   # Clone
@@ -28,21 +30,24 @@
   # Diff
   di = diff
   dc = diff --cached
-  # get all diffs, staged or not
-  d = diff HEAD
+  d = diff HEAD --ignore-space-at-eol -b -w       # get all diffs, staged or not
 
-  # List
-  tl = tag -l
-  bl = branch -a
-  rl = remote -v
+  # Merge
+  mm = merge master
 
   # Status
   s = status -s
 
+  # Stash
+  st = stash
+  sd = stash show -p                                                # stash diff
+  sp = stash pop
+  stls = stash list
+
   # Pull
   pl   = pull
   plo  = pull origin
-  plom = pull -u origin master
+  plom = pull origin master
 
   # Push
   ps   = push
@@ -58,15 +63,12 @@
 
   # Reset
   r = reset
-
+  trash = reset --hard HEAD
 
   # Logs
   l  = log --pretty=oneline --decorate --abbrev-commit --max-count=15
   ll = log --graph --pretty=format:'%Cred%h%Creset %an: %s %Creset%Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   ls = log --oneline --graph
-
-  # Sync
-  sync = plu && pso
 
 [color]
   diff = auto
@@ -93,3 +95,6 @@
   editor = vim
   excludesfile = ~/.gitignore_global
 
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX

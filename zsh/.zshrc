@@ -1,17 +1,17 @@
 # Colors
-export TERM='xterm-256color'
+export TERM='screen-256color'
 
 # ZSH completion
-autoload -U compinit
-compinit
+# autoload -U compinit
+# compinit
 
 # Correction
 setopt correctall
 
 # ZSH history
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=2000
-HISTSAVE=2000
+HISTSIZE=200000
+HISTSAVE=200000
 SAVEHIST=HISTSIZE
 
 DISABLE_CORRECTION="true"
@@ -50,12 +50,16 @@ bindkey '^N' history-substring-search-down
 
 # Path stuff
 # Load Ruby paths
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-export NVM_DIR="/home/jack/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+#export NVM_DIR="/home/jack/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+fpath=( ~/.zsh/scripts "${fpath[@]}" )
 
 # NERDTree bookmarks
 export NERDTREE_BOOKMARKS="~/.vim/.NERDTreeBookmarks"
+
+export PAGER=less
 
 # Load aliases
 source ~/.zsh/aliases
@@ -66,8 +70,15 @@ source ~/.zsh/antigen/antigen.zsh
 # Antigen (oh-my-zsh) packages
 antigen-bundle extract
 antigen-bundle git
-antigen-bundle pip
+#antigen-bundle pip
 antigen-bundle tmuxinator
+antigen-bundle grunt
+#antigen-bundle gulp
+# antigen-bundle npm
+# antigen-bundle nvm
+# antigen-bundle brew
+# antigen-bundle brew
+# antigen-bundle brew-cask
 antigen bundle felixr/docker-zsh-completion
 antigen bundle akoenig/npm-run.plugin.zsh
 
@@ -78,6 +89,6 @@ antigen bundle mafredri/zsh-async
 antigen bundle rhinoceraptor/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-history-substring-search
+antigen-bundle zsh-users/zsh-completions
 
 antigen apply
-
