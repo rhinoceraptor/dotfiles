@@ -45,6 +45,8 @@ clear-screen() clear
 bindkey '^o' clear-screen
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
+zle -N history-substring-search-up
+zle -N history-substring-search-down
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
@@ -68,17 +70,17 @@ source ~/.zsh/aliases
 source ~/.zsh/antigen/antigen.zsh
 
 # Antigen (oh-my-zsh) packages
-antigen-bundle extract
-antigen-bundle git
-#antigen-bundle pip
-antigen-bundle tmuxinator
-antigen-bundle grunt
-#antigen-bundle gulp
-# antigen-bundle npm
-# antigen-bundle nvm
-# antigen-bundle brew
-# antigen-bundle brew
-# antigen-bundle brew-cask
+antigen bundle extract
+antigen bundle git
+#antigen bundle pip
+antigen bundle tmuxinator
+antigen bundle grunt
+#antigen bundle gulp
+# antigen bundle npm
+# antigen bundle nvm
+# antigen bundle brew
+# antigen bundle brew
+# antigen bundle brew-cask
 antigen bundle felixr/docker-zsh-completion
 antigen bundle akoenig/npm-run.plugin.zsh
 
@@ -88,7 +90,7 @@ antigen bundle b4b4r07/zsh-vimode-visual
 antigen bundle mafredri/zsh-async
 antigen bundle rhinoceraptor/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle zsh-users/zsh-history-substring-search
-antigen-bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-completions
 
 antigen apply
