@@ -1,26 +1,23 @@
 #!/usr/bin/env zsh
 
-if [[ "$(uname)" == "Darwin" ]]; then
-  alias copy="pbcopy <"
-  alias ls="gls --color=auto --group-directories-first -lA"
-
-elif [[ "$(uname)" == "Linux" ]]; then
-  alias open="xdg-open >/dev/null 2>&1"
-  alias copy="xclip -selection c"
-fi
-
-# General command line aliases
+alias vim="nvim"
 alias sl="ls"
-alias sl="l"
-alias ivm="vim"
-alias v="vim"
-alias t="tree ."
-alias subl="subl >/dev/null 2>&1"
-alias c="clear"
-alias s="sudo"
-alias ss="sudo su"
-alias viminstall="vim +PluginInstall +qall"
+alias ivm="nvim"
 alias hack.exe="export GREP_COLOR='1;32'; cat /dev/urandom | hexdump -C | grep --color=auto \"ca fe\""
 alias myip="curl ifconfig.me"
-alias netscan="sudo arp-scan --interface=en0 --localnet"
-alias bnode="babel-node --presets es2015"
+alias netscan="arp-scan --interface=en0 --localnet"
+alias rs="npm run-script"
+alias serve="http-server ."
+
+UNAME=$(uname)
+
+if [[ "$UNAME" == "Darwin" ]]; then
+  alias copy="pbcopy <"
+  alias ls="gls --color=auto --group-directories-first -lA"
+elif [[ "$UNAME" == "Linux" ]]; then
+  alias open="xdg-open >/dev/null 2>&1"
+  alias copy="xclip -selection c"
+  alias ls="ls --color=auto --group-directories-first -lA"
+fi
+
+

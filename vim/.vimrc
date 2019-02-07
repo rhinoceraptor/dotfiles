@@ -7,6 +7,7 @@
 "------------------------"
 
 " Convenient whitespace marking
+set lisp
 set list
 set listchars=tab:>\ ,eol:¬
 
@@ -94,6 +95,9 @@ if !empty($NERDTREE_BOOKMARKS)
 endif
 nmap <silent> <F3> :NERDTreeToggle<CR>
 
+set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*,*node_modules*
+let NERDTreeRespectWildIgnore=1
+
 " Turn off search highlight - backslash space
 nnoremap <leader><space> :nohlsearch<CR>
 
@@ -126,14 +130,14 @@ let g:NERDTreeChDirMode       = 2
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
+    \ "Staged"    : "➕",
+    \ "Untracked" : "⭐",
+    \ "Renamed"   : "➡",
     \ "Unmerged"  : "═",
     \ "Deleted"   : "✖",
     \ "Dirty"     : "✗",
     \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
+    \ "Unknown"   : "❓"
     \ }
 "let g:NERDTreeIndicatorMapCustom = {
 "    \ "Modified"  : "🔸 ",
@@ -157,6 +161,9 @@ set dir=~/.vim/tmp/swp//
 "-----"
 set rtp+=~/.fzf
 nnoremap <C-p> :FZF -m<cr>
+" nnoremap <C-P> :Ag<cr>
+"let $FZF_DEFAULT_COMMAND='ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 "-----------------"
 " Command aliases "
@@ -164,12 +171,15 @@ nnoremap <C-p> :FZF -m<cr>
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Wq wq
+cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
 cnoreabbrev WQa wqa
 cnoreabbrev Wqa wqa
 cnoreabbrev Qa qa
 cnoreabbrev QA qa
+cnoreabbrev Sp sp
+cnoreabbrev Vsp vsp
 
 "------"
 " Tmux "
@@ -198,6 +208,8 @@ else
   map <C-k> <C-w>k
   map <C-l> <C-w>l
 endif
+
+xmap ga <Plug>(EasyAlign)
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -228,7 +240,7 @@ Bundle 'nvie/vim-togglemouse'
 " File browser
 Plugin 'scrooloose/nerdtree.git'
 " Git integration for Nerd Tree
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'albfan/nerdtree-git-plugin'
 " Trailing whitespace is evil!
 Bundle 'ntpeters/vim-better-whitespace'
 " Status line
@@ -275,7 +287,14 @@ Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'rollxx/vim-antlr'
 " Racket
 Bundle 'wlangstroth/vim-racket'
+Bundle 'hashivim/vim-vagrant'
 
+Bundle 'dag/vim-fish'
+" JSX
+Bundle 'pangloss/vim-javascript'
+Bundle 'https://github.com/mxw/vim-jsx'
+Bundle 'OmniSharp/omnisharp-vim'
+Bundle 'junegunn/vim-easy-align'
 call vundle#end()
 
 "----------------"
@@ -298,3 +317,4 @@ silent! if emoji#available()
 endif
 
 
+set formatoptions+=r

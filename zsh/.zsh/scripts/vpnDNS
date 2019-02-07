@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+DNS_SERVERS=$(ipconfig.exe /all | \
+  awk '/phion/,/NetBIOS/' | \
+  awk '/DNS Servers/,/NetBIOS/')
+
+echo $DNS_SERVERS
+
+Get-DnsClientServerAddress

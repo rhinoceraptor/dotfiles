@@ -1,5 +1,5 @@
+zsh/.zsh/zplug
 vim/.vim/.netrwhist
 vim/.vim/bundle
 vim/.vim/tmp
-tmux/.tmux/plugins/*
-tmux/.tmux/resurrect
+tmux/.tmux/plugins
