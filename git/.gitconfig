@@ -92,6 +92,6 @@
 
 [core]
   preloadindex = true
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore_global
 

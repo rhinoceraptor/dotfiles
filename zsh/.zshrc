@@ -2,7 +2,7 @@ zmodload zsh/zprof
 export SHELL="/usr/bin/zsh"
 
 unsetopt BG_NICE
-export TERM='screen-256color'
+export TERM='xterm-256color'
 
 setopt correctall
 
@@ -69,3 +69,5 @@ zplug "zsh-users/zsh-completions", from:github
 
 zplug load
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

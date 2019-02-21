@@ -1,10 +1,6 @@
-"---------------"
-" Jack's .vimrc "
-"---------------"
-
-"------------------------"
-" General editor settings"
-"------------------------"
+"----------------------"
+" Jack's neovim config "
+"----------------------"
 
 set lisp
 set list
@@ -78,6 +74,7 @@ let NERDTreeDirArrows = 1
 nmap <silent> <F3> :NERDTreeToggle<CR>
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*,*node_modules*
 let NERDTreeRespectWildIgnore=1
+let NERDTreeHighlightCursorline = 0
 
 " Turn off search highlight - backslash space
 nnoremap <leader><space> :nohlsearch<CR>
@@ -196,14 +193,15 @@ endif
 
 call plug#begin('~/.local/nvim/plugged')
 
-Plug 'Yggdroot/indentLine'
-Plug 'ayu-theme/ayu-vim'
+" Plug 'Yggdroot/indentLine'
+Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'https://github.com/scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'albfan/nerdtree-git-plugin'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -229,12 +227,12 @@ silent! if emoji#available()
   let g:gitgutter_sign_modified_removed = emoji#for('warning')
 endif
 
-set formatoptions+=r
+let airline_theme="base16_mocha"
+let g:seoul256_background = 235
+colo seoul256
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
-"let ayucolor="light"
-let ayucolor="mirage"
-"let ayucolor="dark"
-colorscheme ayu
+let g:airline#extensions#tabline#enabled = 1
+" let g:indentLine_showFirstIndentLevel = 1
+" let g:indentLine_setColors = 0
+" let g:indentLine_char = '│'
 
