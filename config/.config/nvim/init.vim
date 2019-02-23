@@ -40,6 +40,7 @@ set backspace=2
 
 set pastetoggle=<F2>
 setlocal shiftwidth=2
+set cursorline
 
 filetype indent on
 
@@ -214,7 +215,17 @@ Plug 'junegunn/vim-emoji'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/mxw/vim-jsx'
-Plug 'OmniSharp/omnisharp-vim'
+Plug 'bronson/vim-crosshairs'
+
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" " For async completion
+" Plug 'Shougo/deoplete.nvim'
+" " For Denite features
+" Plug 'Shougo/denite.nvim'
+
+" Enable deoplete at startup
+let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 

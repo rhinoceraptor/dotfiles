@@ -10,14 +10,23 @@ alias rs="npm run-script"
 alias serve="http-server ."
 
 UNAME=$(uname)
+UNAME_A=$(uname -a)
 
 if [[ "$UNAME" == "Darwin" ]]; then
   alias copy="pbcopy <"
   alias ls="gls --color=auto --group-directories-first -lA"
 elif [[ "$UNAME" == "Linux" ]]; then
-  alias open="xdg-open >/dev/null 2>&1"
   alias copy="xclip -selection c"
   alias ls="ls --color=auto --group-directories-first -lA"
+
+  # Is this Windows Subsytem for Linux?
+  if [[ "$UNAME_A" == *"Microsoft"* ]]; then
+    # https://github.com/4U6U57/wsl-open
+    alias open="wsl-open >/dev/null 2>&1"
+    alias xdg-open="open"
+  else
+    alias open="xdg-open >/dev/null 2>&1"
+  fi
 fi
 
 
