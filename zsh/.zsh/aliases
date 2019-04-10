@@ -28,7 +28,7 @@ fi
 # General command line aliases
 alias sl="ls"
 alias sl="l"
-alias ls="gls --color=auto --group-directories-first -lA"
+alias ls="ls --color=auto --group-directories-first -lA"
 alias ivm="vim"
 alias v="vim"
 alias t="tree ."
@@ -54,6 +54,6 @@ alias npmi="npm install --save-dev"
 alias npmis="npm install --save"
 alias npmg="sudo npm install -g"
 
-alias netscan="sudo arp-scan --interface=en0 --localnet"
+alias netscan="sudo arp-scan --interface=wlp2s0 --localnet"
 
 alias bnode="babel-node --presets es2015"

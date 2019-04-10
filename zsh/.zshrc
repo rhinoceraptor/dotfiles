@@ -45,6 +45,8 @@ clear-screen() clear
 bindkey '^o' clear-screen
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
+zle -N history-substring-search-up
+zle -N history-substring-search-down
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
@@ -53,7 +55,9 @@ bindkey '^N' history-substring-search-down
 #PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 #export NVM_DIR="/home/jack/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
+PATH="$PATH:/home/jack/.zsh/scripts"
+PATH="$PATH:/home/jack/.dotnet/tools"
+PATH="$PATH:/home/jack/git/alacritty/target/release/"
 fpath=( ~/.zsh/scripts "${fpath[@]}" )
 
 # NERDTree bookmarks
@@ -64,21 +68,31 @@ export PAGER=less
 # Load aliases
 source ~/.zsh/aliases
 
+# gnuradio
+export PATH=/opt/qt/bin:$PATH
+export LD_LIBRARY_PATH=/opt/qt/lib:/usr/local/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=/opt/qt/lib/python2.7/dist-packages:$PYTHONPATH
+export PKG_CONFIG_PATH=/opt/qt/lib/pkgconfig:$PKG_CONFIG_PATH
+
+# snaps
+export PATH=/snap/bin:$PATH
+
+
 # Load antigen
 source ~/.zsh/antigen/antigen.zsh
 
 # Antigen (oh-my-zsh) packages
-antigen-bundle extract
-antigen-bundle git
-#antigen-bundle pip
-antigen-bundle tmuxinator
-antigen-bundle grunt
-#antigen-bundle gulp
-# antigen-bundle npm
-# antigen-bundle nvm
-# antigen-bundle brew
-# antigen-bundle brew
-# antigen-bundle brew-cask
+antigen bundle extract
+antigen bundle git
+#antigen bundle pip
+antigen bundle tmuxinator
+antigen bundle grunt
+#antigen bundle gulp
+# antigen bundle npm
+# antigen bundle nvm
+# antigen bundle brew
+# antigen bundle brew
+# antigen bundle brew-cask
 antigen bundle felixr/docker-zsh-completion
 antigen bundle akoenig/npm-run.plugin.zsh
 
@@ -88,7 +102,7 @@ antigen bundle b4b4r07/zsh-vimode-visual
 antigen bundle mafredri/zsh-async
 antigen bundle rhinoceraptor/pure
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle zsh-users/zsh-history-substring-search
-antigen-bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-completions
 
 antigen apply

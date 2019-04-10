@@ -9,6 +9,7 @@
 " Convenient whitespace marking
 set list
 set listchars=tab:>\ ,eol:¬
+set lisp
 
 " Enable mouse
 set mouse=a
@@ -34,7 +35,6 @@ set tabstop=2
 set smartindent
 set shiftwidth=2
 
-set omnifunc=syntaxcomplete#Complete
 set scrolloff=10
 set showmatch
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
@@ -53,6 +53,52 @@ setlocal shiftwidth=2
 
 " Look for indent style in ~/.vim/indent/
 filetype indent on
+
+" Omnisharp settings
+filetype plugin on
+set completeopt=longest,menuone,preview
+set omnifunc=syntaxcomplete#Complete
+let g:OmniSharp_selector_ui = 'fzf'  " Use fzf.vim
+set previewheight=5
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+let g:OmniSharp_highlight_types = 1
+let g:OmniSharp_want_snippet=1
+augroup omnisharp_commands
+  autocmd!
+
+  " When Syntastic is available but not ALE, automatic syntax check on events
+  " (TextChanged requires Vim 7.4)
+  " autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+
+  " Show type information automatically when the cursor stops moving
+  autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+  " Update the highlighting whenever leaving insert mode
+  autocmd InsertLeave *.cs call OmniSharp#HighlightBuffer()
+
+  " Alternatively, use a mapping to refresh highlighting for the current buffer
+  autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
+
+  " The following commands are contextual, based on the cursor position.
+  autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+  " Finds members in the current buffer
+  autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+  autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+  autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+  autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+  autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+  " Navigate up and down by method/property/field
+  " autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+  " autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+augroup END
+
 
 " Save the file scroll location
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
@@ -79,7 +125,7 @@ xnoremap >  >gv
 " Show NERDTree automatically in the pwd if vim called with no arguments
 function! StartUp()
   if 0 == argc()
-    NERDTree
+  NERDTree
   end
 endfunction
 autocmd VimEnter * call StartUp()
@@ -89,7 +135,7 @@ let NERDTreeShowHidden=1
 let NERDTreeShowBookmarks=1
 if !empty($NERDTREE_BOOKMARKS)
   if filereadable($NERDTREE_BOOKMARKS)
-    let g:NERDTreeBookmarksFile = $NERDTREE_BOOKMARKS
+  let g:NERDTreeBookmarksFile = $NERDTREE_BOOKMARKS
   endif
 endif
 nmap <silent> <F3> :NERDTreeToggle<CR>
@@ -105,8 +151,8 @@ nnoremap k gk
 set colorcolumn=80
 " Auto resize splits after window resize
 augroup Misc
-    autocmd!
-    autocmd VimResized * exe "normal! \<c-w>="
+  autocmd!
+  autocmd VimResized * exe "normal! \<c-w>="
 augroup END
 
 " Open splits the right way
@@ -122,30 +168,30 @@ nnoremap <C-w>l 5<C-w>>
 " Automatically strip trailing whitespace on write
 autocmd BufWritePre * :%s/\s\+$//e
 
-let g:NERDTreeChDirMode       = 2
+let g:NERDTreeChDirMode = 2
 
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
+  \ "Modified"  : "✹",
+  \ "Staged"  : "✚",
+  \ "Untracked" : "✭",
+  \ "Renamed"   : "➜",
+  \ "Unmerged"  : "═",
+  \ "Deleted"   : "✖",
+  \ "Dirty"   : "✗",
+  \ "Clean"   : "✔︎",
+  \ "Unknown"   : "?"
+  \ }
 "let g:NERDTreeIndicatorMapCustom = {
-"    \ "Modified"  : "🔸 ",
-"    \ "Staged"    : "✅  ",
-"    \ "Untracked" : "🆕  ",
-"    \ "Renamed"   : " ",
-"    \ "Unmerged"  : "🆙  ",
-"    \ "Deleted"   : "❌  ",
-"    \ "Dirty"     : "*️⃣" ,
-"    \ "Clean"     : "😀  ",
-"    \ "Unknown"   : "❗️  "
-"    \ }
+"  \ "Modified"  : "🔸 ",
+"  \ "Staged"  : "✅  ",
+"  \ "Untracked" : "🆕  ",
+"  \ "Renamed"   : " ",
+"  \ "Unmerged"  : "🆙  ",
+"  \ "Deleted"   : "❌  ",
+"  \ "Dirty"   : "*️⃣" ,
+"  \ "Clean"   : "😀  ",
+"  \ "Unknown"   : "❗️  "
+"  \ }
 "
 " Save undo and swp in a convenient location
 set undofile
@@ -153,11 +199,6 @@ set undodir=~/.vim/tmp/undo//
 set dir=~/.vim/tmp/swp//
 
 "-----"
-" FZF "
-"-----"
-set rtp+=~/.fzf
-nnoremap <C-p> :FZF -m<cr>
-
 "-----------------"
 " Command aliases "
 "-----------------"
@@ -176,12 +217,12 @@ cnoreabbrev QA qa
 "------"
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
+  let previous_winnr = winnr()
+  silent! execute "wincmd " . a:wincmd
+  if previous_winnr == winnr()
+    call system("tmux select-pane -" . a:tmuxdir)
+    redraw!
+  endif
   endfunction
 
   let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
@@ -221,8 +262,6 @@ Plugin 'junegunn/seoul256.vim'
 Plugin 'tpope/vim-fugitive'
 " Git gutter
 Plugin 'airblade/vim-gitgutter'
-" Save sessions
-Plugin 'tpope/vim-obsession'
 " Toggle mouse focus b/t vim and terminal emulator with F12
 Bundle 'nvie/vim-togglemouse'
 " File browser
@@ -237,15 +276,11 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 " Editor Config
 Plugin 'editorconfig/editorconfig-vim'
-" FZF
+" FZF - fuzzy file finder
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+" Ack
 Plugin 'mileszs/ack.vim'
-
-"-----------------------"
-" Autocomplete packages "
-"-----------------------"
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 "---------------------------"
 " Syntax highlight packages "
@@ -255,28 +290,28 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'tmux-plugins/vim-tmux'
 " ES6
 Plugin 'isRuslan/vim-es6'
-" Jade templates
-Plugin 'digitaltoad/vim-jade'
-" Handlebars templates
-Plugin 'mustache/vim-mustache-handlebars'
-" Stylus
-Plugin 'wavded/vim-stylus'
-" Ansible
-Bundle 'chase/vim-ansible-yaml'
 " Markdown
 Plugin 'tpope/vim-markdown'
 " Emoji
 Bundle 'junegunn/vim-emoji'
-" Swift
-Bundle 'keith/swift.vim'
 " Docker
 Bundle 'ekalinin/Dockerfile.vim'
-" ANTLR
-Bundle 'rollxx/vim-antlr'
-" Racket
-Bundle 'wlangstroth/vim-racket'
+" Syntax linting
+Plugin 'w0rp/ale'
+
+Bundle 'OmniSharp/omnisharp-vim'
+Plugin 'tpope/vim-dispatch'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'lervag/vimtex'
 
 call vundle#end()
+
+" FZF "
+"-----"
+set rtp+=~/.fzf
+nnoremap <C-p> :FZF -m<cr>
+
 
 "----------------"
 " Color settings "
