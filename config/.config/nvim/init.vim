@@ -194,40 +194,45 @@ endif
 
 call plug#begin('~/.local/nvim/plugged')
 
-" Plug 'Yggdroot/indentLine'
+" Theming
 Plug 'junegunn/seoul256.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'https://github.com/scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'albfan/nerdtree-git-plugin'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'editorconfig/editorconfig-vim'
+
+" Git support
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'albfan/nerdtree-git-plugin'
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'tmux-plugins/vim-tmux'
+Plug 'christoomey/vim-tmux-navigator'
+
+" Language support
+Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-markdown'
 Plug 'junegunn/vim-emoji'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/mxw/vim-jsx'
+
 Plug 'bronson/vim-crosshairs'
 
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-" " For async completion
-" Plug 'Shougo/deoplete.nvim'
-" " For Denite features
-" Plug 'Shougo/denite.nvim'
-
-" Enable deoplete at startup
-let g:deoplete#enable_at_startup = 1
+" Autocomplete plugins
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'wokalski/autocomplete-flow'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
+" Plug 'wellle/tmux-complete.vim'
 
 call plug#end()
+
+" let g:deoplete#enable_at_startup = 1
+" let g:neosnippet#enable_completed_snippet = 1
 
 syntax enable
 

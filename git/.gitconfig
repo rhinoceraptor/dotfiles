@@ -95,3 +95,13 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
 
+[mergetool]
+  path = nvim
+
+[difftool]
+  path = nvim
+
+[mergetool "vimdiff"]
+	path = nvim
+[difftool "vimdiff"]
+	path = nvim
