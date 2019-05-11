@@ -44,10 +44,11 @@ bindkey '^N' history-substring-search-down
 zle -N history-substring-search-up
 zle -N history-substring-search-down
 
-PATH="node_modules/.bin/:$PATH"
 PATH="$HOME/.zsh/scripts/:$PATH"
 PATH="$HOME/scripts/:$PATH"
+PATH="/opt/local/bin/:$PATH"
 
+export GOPATH=$HOME/git/go
 export PAGER=less
 export DISPLAY=:0
 

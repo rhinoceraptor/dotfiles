@@ -42,6 +42,9 @@ set pastetoggle=<F2>
 setlocal shiftwidth=2
 set cursorline
 
+set shell=bash
+set linebreak
+
 filetype indent on
 
 " Save the file scroll location
@@ -139,10 +142,7 @@ set dir=~/.vim/tmp/swp//
 " FZF "
 "-----"
 set rtp+=~/.fzf
-nnoremap <C-p> :FZF -m<cr>
-" nnoremap <C-P> :Ag<cr>
-"let $FZF_DEFAULT_COMMAND='ag -g ""'
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+nnoremap <C-p> :GFiles<cr>
 
 "-----------------"
 " Command aliases "
@@ -236,12 +236,12 @@ call plug#end()
 
 syntax enable
 
-silent! if emoji#available()
-  let g:gitgutter_sign_added = emoji#for('white_check_mark')
-  let g:gitgutter_sign_modified = emoji#for('large_orange_diamond')
-  let g:gitgutter_sign_removed = emoji#for('x')
-  let g:gitgutter_sign_modified_removed = emoji#for('warning')
-endif
+"silent! if emoji#available()
+"  let g:gitgutter_sign_added = emoji#for('white_check_mark')
+"  let g:gitgutter_sign_modified = emoji#for('large_orange_diamond')
+"  let g:gitgutter_sign_removed = emoji#for('x')
+"  let g:gitgutter_sign_modified_removed = emoji#for('warning')
+"endif
 
 let airline_theme="base16_mocha"
 let g:seoul256_background = 235
