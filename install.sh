@@ -19,5 +19,5 @@ git clone https://github.com/zplug/zplug ~/.zsh/.zplug
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Install vim packages
-vim +PluginInstall +qall
+nvim +PlugInstall
 

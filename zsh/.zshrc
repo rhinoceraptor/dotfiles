@@ -55,7 +55,7 @@ export DISPLAY=:0
 autoload -U promptinit; promptinit
 
 source ~/.zsh/aliases
-source ~/.zsh/zplug/init.zsh
+source ~/.zsh/.zplug/init.zsh
 
 zplug "junegunn/fzf-bin", \
   from:gh-r, \
