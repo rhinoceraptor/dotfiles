@@ -8,6 +8,8 @@ alias myip="curl ifconfig.me"
 alias netscan="arp-scan --interface=en0 --localnet"
 alias rs="npm run-script"
 alias serve="http-server ."
+alias aws="aws-3.7"
+alias getuuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 
 UNAME=$(uname)
 UNAME_A=$(uname -a)
@@ -15,6 +17,7 @@ UNAME_A=$(uname -a)
 if [[ "$UNAME" == "Darwin" ]]; then
   alias copy="pbcopy <"
   alias ls="gls --color=auto --group-directories-first -lA"
+  alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 elif [[ "$UNAME" == "Linux" ]]; then
   alias copy="xclip -selection c"
   alias ls="ls --color=auto --group-directories-first -lA"
@@ -29,4 +32,11 @@ elif [[ "$UNAME" == "Linux" ]]; then
   fi
 fi
 
+alias kubedev='export KUBECONFIG=~/.kube/kubeconfig-dev-sandbox-redux'
+alias kubeplayground='export KUBECONFIG=~/.kube/kubeconfig-playground-sandbox'
+alias kubestaging='export KUBECONFIG=~/.kube/kubeconfig-arryn-staging-redux'
+alias kubeweb='export KUBECONFIG=~/.kube/kubeconfig-greyjoy-production'
+alias kubebeta='export KUBECONFIG=~/.kube/kubeconfig-tully-beta'
+alias kubewebsingapore='export KUBECONFIG=~/.kube/kubeconfig-greyjoy-production-singapore'
+alias kubeprod='export KUBECONFIG=~/.kube/kubeconfig-stark-production'
 

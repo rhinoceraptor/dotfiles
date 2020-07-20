@@ -8,4 +8,7 @@ Desktop.ini
 Thumbs.db
 .Spotlight-V100
 .Trashes
-
+.idea
+.vscode
+newrelic_agent.log
+.env

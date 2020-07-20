@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
+# Check if zsh/git/tmux/stow/nvim/curl already installed
+if   ! type "zsh"  &> /dev/null; then echo "Install zsh!";  exit 1
+elif ! type "git"  &> /dev/null; then echo "Install git!";  exit 1
+elif ! type "tmux" &> /dev/null; then echo "Install tmux!"; exit 1
+elif ! type "nvim" &> /dev/null; then echo "Install nvim!"; exit 1
+elif ! type "curl" &> /dev/null; then echo "Install curl!"; exit 1
+elif ! type "curl" &> /dev/null; then echo "Install curl!"; exit 1
+fi
+
+exit 1
 # Stow config directories
 stow zsh
-stow vim
 stow git
 stow tmux
 stow config

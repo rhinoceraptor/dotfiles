@@ -1,8 +1,9 @@
 zmodload zsh/zprof
-export SHELL="/usr/bin/zsh"
 
 unsetopt BG_NICE
 export TERM='xterm-256color'
+
+export EDITOR=nvim
 
 setopt correctall
 
@@ -44,9 +45,14 @@ bindkey '^N' history-substring-search-down
 zle -N history-substring-search-up
 zle -N history-substring-search-down
 
-PATH="$HOME/.zsh/scripts/:$PATH"
-PATH="$HOME/scripts/:$PATH"
-PATH="/opt/local/bin/:$PATH"
+PATH="$HOME/.zsh/scripts:$PATH"
+PATH="$HOME/scripts:$PATH"
+PATH="/opt/local/bin:$PATH"
+PATH="/opt/local/sbin:$PATH"
+PATH="$HOME/bin:$PATH"
+PATH="$HOME/git/go/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.npm-global/bin:$PATH"
 
 export GOPATH=$HOME/git/go
 export PAGER=less
@@ -55,7 +61,7 @@ export DISPLAY=:0
 autoload -U promptinit; promptinit
 
 source ~/.zsh/aliases
-source ~/.zsh/.zplug/init.zsh
+source ~/.zsh/zplug/init.zsh
 
 zplug "junegunn/fzf-bin", \
   from:gh-r, \
