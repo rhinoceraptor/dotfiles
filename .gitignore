@@ -1,6 +1,6 @@
 zsh/.zsh/aliases/work/*.zsh
 zsh/.zsh/.zplug
-vim/.vim/.netrwhist
+*.netrwhist
 vim/.vim/bundle
 vim/.vim/tmp
 tmux/.tmux/plugins
