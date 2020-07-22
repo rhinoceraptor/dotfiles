@@ -1,3 +1,4 @@
+zsh/.zsh/aliases/work/*.zsh
 zsh/.zsh/.zplug
 vim/.vim/.netrwhist
 vim/.vim/bundle

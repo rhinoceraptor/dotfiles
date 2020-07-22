@@ -45,23 +45,19 @@ bindkey '^N' history-substring-search-down
 zle -N history-substring-search-up
 zle -N history-substring-search-down
 
-PATH="$HOME/.zsh/scripts:$PATH"
-PATH="$HOME/scripts:$PATH"
-PATH="/opt/local/bin:$PATH"
-PATH="/opt/local/sbin:$PATH"
+PATH="$HOME/.zsh/scripts/node:$PATH"
+PATH="$HOME/.zsh/scripts/virtualbox:$PATH"
 PATH="$HOME/bin:$PATH"
-PATH="$HOME/git/go/bin:$PATH"
-PATH="$HOME/.cargo/bin:$PATH"
-PATH="$HOME/.npm-global/bin:$PATH"
 
-export GOPATH=$HOME/git/go
 export PAGER=less
 export DISPLAY=:0
 
 autoload -U promptinit; promptinit
 
-source ~/.zsh/aliases
-source ~/.zsh/zplug/init.zsh
+source $HOME/.zsh/aliases.zsh
+source $HOME/.zsh/aliases/node/*.zsh
+source $HOME/.zsh/aliases/work/*.zsh
+source $HOME/.zsh/zplug/init.zsh
 
 zplug "junegunn/fzf-bin", \
   from:gh-r, \
@@ -76,5 +72,4 @@ zplug "zsh-users/zsh-completions", from:github
 
 zplug load
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh

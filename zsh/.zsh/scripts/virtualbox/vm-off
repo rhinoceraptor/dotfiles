@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+PACKAGE=${@: -1}
+
+if [ -z "$PACKAGE" ]; then
+  echo "I need the name of a VM to power off!"
+  exit 1
+fi
+
+VBoxManage controlvm $1 poweroff
+

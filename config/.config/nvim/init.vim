@@ -97,7 +97,7 @@ set dir=~/.vim/tmp/swp//
 " FZF "
 "-----"
 set rtp+=~/.fzf
-nnoremap <C-p> :GFiles<cr>
+nnoremap <C-p> :GFiles<CR>
 
 "-----------------"
 " Command aliases "
