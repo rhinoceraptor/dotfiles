@@ -52,6 +52,8 @@ PATH="$HOME/bin:$PATH"
 export PAGER=less
 export DISPLAY=:0
 
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
 autoload -U promptinit; promptinit
 
 source $HOME/.zsh/aliases.zsh
@@ -73,3 +75,5 @@ zplug "zsh-users/zsh-completions", from:github
 zplug load
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

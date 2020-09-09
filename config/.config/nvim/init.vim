@@ -35,6 +35,8 @@ set splitbelow
 set splitright
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*,*node_modules*
 set colorcolumn=80
+set nowrap
+set redrawtime=10000
 
 filetype indent on
 
@@ -96,8 +98,8 @@ set dir=~/.vim/tmp/swp//
 "-----"
 " FZF "
 "-----"
-set rtp+=~/.fzf
-nnoremap <C-p> :GFiles<CR>
+" set rtp+=~/.fzf
+nnoremap <C-p> :Files<CR>
 
 "-----------------"
 " Command aliases "
