@@ -57,9 +57,14 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 autoload -U promptinit; promptinit
 
 source $HOME/.zsh/aliases.zsh
-source $HOME/.zsh/aliases/node/*.zsh
-source $HOME/.zsh/aliases/work/*.zsh
 source $HOME/.zsh/zplug/init.zsh
+
+source_directory () {
+  for alias in $1/*.zsh; do source $alias; done
+}
+
+source_directory $HOME/.zsh/aliases/node
+source_directory $HOME/.zsh/aliases/work
 
 zplug "junegunn/fzf-bin", \
   from:gh-r, \
