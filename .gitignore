@@ -1,5 +1,5 @@
 zsh/.zsh/aliases/work/*.zsh
-zsh/.zsh/scripts/work/*.zsh
+zsh/.zsh/scripts/work/*
 */work/*
 zsh/.zsh/.zplug
 *.netrwhist

@@ -64,7 +64,6 @@ source_directory () {
 }
 
 source_directory $HOME/.zsh/aliases/node
-source_directory $HOME/.zsh/aliases/work
 
 zplug "junegunn/fzf-bin", \
   from:gh-r, \
@@ -82,3 +81,4 @@ zplug load
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

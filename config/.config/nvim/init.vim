@@ -57,12 +57,13 @@ function! StartUp()
   end
 endfunction
 autocmd VimEnter * call StartUp()
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+" let NERDTreeShowHidden=1
+let NERDTreeIgnore=["^\.git$"]
+" let NERDTreeMinimalUI = 1
 nmap <silent> <F3> :NERDTreeToggle<CR>
-let NERDTreeRespectWildIgnore=1
+" let NERDTreeRespectWildIgnore=1
 let NERDTreeHighlightCursorline = 0
+let NERDTreeShowHidden=1
 
 " Turn off search highlight - backslash space
 nnoremap <leader><space> :nohlsearch<CR>
@@ -154,15 +155,20 @@ call plug#begin('~/.local/nvim/plugged')
 " Theme plugins
 Plug 'wadackel/vim-dogrun'
 Plug 'itchyny/lightline.vim'
+" Plug 'cormacrelf/vim-colors-github'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
 " Editing plugins
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-surround'
 
 " Language support plugins
 Plug 'editorconfig/editorconfig-vim'
@@ -170,10 +176,14 @@ Plug 'tpope/vim-markdown'
 Plug 'junegunn/vim-emoji'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'pangloss/vim-javascript'
-Plug 'https://github.com/mxw/vim-jsx'
-Plug 'bronson/vim-crosshairs'
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'pangloss/vim-javascript'
+" Plug 'https://github.com/mxw/vim-jsx'
+" Plug 'bronson/vim-crosshairs'
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'hwayne/tla.vim'
+" Plug 'lorin/vim-tlaplus'
+Plug 'davidoc/taskpaper.vim'
+" Plug 'hwayne/tla.vim'
 
 call plug#end()
 
@@ -183,7 +193,13 @@ syntax enable
 set termguicolors
 colorscheme dogrun
 let g:lightline = {
-  \ 'colorscheme': 'dogrun',
-  \ }
+      \ 'colorscheme': 'dogrun',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'relativepath', 'modified' ] ],
+      \ }
+      \ }
+" set background=light
+" colorscheme github
 
+" let g:airline_theme='github'
 let g:airline#extensions#tabline#enabled = 1
