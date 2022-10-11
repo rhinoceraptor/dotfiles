@@ -3,10 +3,10 @@
 UNAME=$(uname)
 if [[ "$UNAME" == "Darwin" ]]; then
   alias copy="pbcopy"
-  alias ls="gls --color=auto --group-directories-first -lA"
+  alias ls="gls --color=auto --group-directories-first -lAh"
 elif [[ "$UNAME" == "Linux" ]]; then
   alias copy="xclip -selection c"
-  alias ls="ls --color=auto --group-directories-first -lA"
+  alias ls="ls --color=auto --group-directories-first -lAh"
   alias open="xdg-open >/dev/null 2>&1"
 fi
 

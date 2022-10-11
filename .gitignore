@@ -1,8 +1,10 @@
 zsh/.zsh/aliases/work/*.zsh
 zsh/.zsh/scripts/work/*
 */work/*
+zsh/.zsh/zplug
 zsh/.zsh/.zplug
 *.netrwhist
 vim/.vim/bundle
 vim/.vim/tmp
 tmux/.tmux/plugins
+config/.config/i3

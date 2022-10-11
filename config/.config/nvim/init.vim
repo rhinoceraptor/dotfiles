@@ -13,11 +13,12 @@ set laststatus=2
 set matchtime=1
 set nocompatible
 set number
-set shiftwidth=8
-set tabstop=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
 set smartindent
 set smarttab
-set shiftwidth=2
 set omnifunc=syntaxcomplete#Complete
 set scrolloff=10
 set showmatch
@@ -30,12 +31,15 @@ setlocal shiftwidth=2
 set cursorline
 set shell=zsh
 set linebreak
+set breakindent
+let break_prefix='>>  '
+let &showbreak=break_prefix
 set wildmenu
 set splitbelow
 set splitright
 set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*,*node_modules*
 set colorcolumn=80
-set nowrap
+set wrap
 set redrawtime=10000
 
 filetype indent on
@@ -101,6 +105,10 @@ set dir=~/.vim/tmp/swp//
 "-----"
 " set rtp+=~/.fzf
 nnoremap <C-p> :GFiles<CR>
+
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+
 
 "-----------------"
 " Command aliases "
@@ -176,6 +184,7 @@ Plug 'tpope/vim-markdown'
 Plug 'junegunn/vim-emoji'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'junegunn/goyo.vim'
 " Plug 'pangloss/vim-javascript'
 " Plug 'https://github.com/mxw/vim-jsx'
 " Plug 'bronson/vim-crosshairs'
@@ -184,6 +193,7 @@ Plug 'tmux-plugins/vim-tmux'
 " Plug 'lorin/vim-tlaplus'
 Plug 'davidoc/taskpaper.vim'
 " Plug 'hwayne/tla.vim'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
