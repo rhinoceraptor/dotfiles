@@ -48,6 +48,7 @@ zle -N history-substring-search-down
 PATH="$HOME/.zsh/scripts/node:$PATH"
 PATH="$HOME/.zsh/scripts/virtualbox:$PATH"
 PATH="$HOME/bin:$PATH"
+ PATH="$HOME/.npm-packages/bin:$PATH"
 
 export PAGER=less
 export DISPLAY=:0
@@ -65,6 +66,8 @@ source_directory () {
 
 source_directory $HOME/.zsh/aliases/node
 source_directory $HOME/.zsh/aliases/work
+
+PATH="$HOME/.pyenv/bin:$PATH"
 
 zplug "junegunn/fzf-bin", \
   from:gh-r, \

@@ -79,7 +79,7 @@ nnoremap <C-w>h 5<C-w><
 nnoremap <C-w>l 5<C-w>>
 
 " Automatically strip trailing whitespace on write
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 
 let g:NERDTreeChDirMode = 2
 
@@ -161,11 +161,8 @@ endif
 call plug#begin('~/.local/nvim/plugged')
 
 " Theme plugins
-Plug 'wadackel/vim-dogrun'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'itchyny/lightline.vim'
-" Plug 'cormacrelf/vim-colors-github'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 
 " Editing plugins
 Plug 'airblade/vim-gitgutter'
@@ -185,15 +182,14 @@ Plug 'junegunn/vim-emoji'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'junegunn/goyo.vim'
-" Plug 'pangloss/vim-javascript'
-" Plug 'https://github.com/mxw/vim-jsx'
-" Plug 'bronson/vim-crosshairs'
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'hwayne/tla.vim'
-" Plug 'lorin/vim-tlaplus'
 Plug 'davidoc/taskpaper.vim'
-" Plug 'hwayne/tla.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'vinnymeller/swagger-preview.nvim'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
@@ -201,15 +197,12 @@ syntax enable
 
 " Theme configuration
 set termguicolors
-colorscheme dogrun
+colorscheme onehalflight
 let g:lightline = {
-      \ 'colorscheme': 'dogrun',
+      \ 'colorscheme': 'onehalfdark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'relativepath', 'modified' ] ],
       \ }
       \ }
-" set background=light
-" colorscheme github
 
-" let g:airline_theme='github'
 let g:airline#extensions#tabline#enabled = 1
