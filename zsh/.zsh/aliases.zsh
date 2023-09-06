@@ -24,3 +24,5 @@ alias netscan="arp-scan --interface=en0 --localnet"
 alias getuuid='uuidgen | tr "[:upper:]" "[:lower:]" | tr -d "\n"'
 alias copyuuid="getuuid | copy"
 
+# Strip EXIF data from photos easily, requires imagemagick
+alias exifstrip="mogrify -strip"
