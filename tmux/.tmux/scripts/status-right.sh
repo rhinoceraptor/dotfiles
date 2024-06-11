@@ -22,6 +22,12 @@ function battery() {
       || echo "$CHARGER")
 
     printf "%s %s" "$PERCENTAGE" "$STATE"
+  elif [[ "$UNAME" =~ .*"Darwin".* ]]; then
+    POWER=$(pmset -g batt)
+    PERCENTAGE=$(echo "$POWER" | grep -oE '[0-9]{2,3}%')
+    STATE=$(pmset -g batt | grep -q 'Battery Power' && echo "$BATTERY" || echo "$CHARGER")
+
+    printf "%s %s" "$PERCENTAGE" "$STATE"
   fi
 }
 

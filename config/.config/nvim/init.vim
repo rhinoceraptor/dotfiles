@@ -79,7 +79,7 @@ nnoremap <C-w>h 5<C-w><
 nnoremap <C-w>l 5<C-w>>
 
 " Automatically strip trailing whitespace on write
-" autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 let g:NERDTreeChDirMode = 2
 

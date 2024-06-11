@@ -48,7 +48,12 @@ zle -N history-substring-search-down
 PATH="$HOME/.zsh/scripts/node:$PATH"
 PATH="$HOME/.zsh/scripts/virtualbox:$PATH"
 PATH="$HOME/bin:$PATH"
- PATH="$HOME/.npm-packages/bin:$PATH"
+PATH="$HOME/.npm-packages/bin:$PATH"
+
+if [[ $(uname -a) =~ .*"Darwin".* ]]; then
+  alias python="python3"
+  PATH="$HOME/Library/Python/3.9/bin:$PATH"
+fi
 
 export PAGER=less
 export DISPLAY=:0
