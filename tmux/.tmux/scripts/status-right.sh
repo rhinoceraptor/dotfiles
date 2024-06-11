@@ -1,8 +1,5 @@
 #!/bin/bash
 
-function bar() {
-  printf "%s" " | "
-}
 
 function battery() {
   BATTERY="🔋️"
@@ -21,13 +18,30 @@ function battery() {
       && echo "$BATTERY" \
       || echo "$CHARGER")
 
-    printf "%s %s" "$PERCENTAGE" "$STATE"
   elif [[ "$UNAME" =~ .*"Darwin".* ]]; then
     POWER=$(pmset -g batt)
-    PERCENTAGE=$(echo "$POWER" | grep -oE '[0-9]{2,3}%')
-    STATE=$(pmset -g batt | grep -q 'Battery Power' && echo "$BATTERY" || echo "$CHARGER")
+    PERCENTAGE=$(echo "$POWER" | grep -oE "[0-9]{2,3}%")
+    STATE=$(pmset -g batt | grep -q "Battery Power" && echo "$BATTERY" || echo "$CHARGER")
+  fi
 
-    printf "%s %s" "$PERCENTAGE" "$STATE"
+  if [ -n "$PERCENTAGE" ] && [ -n "$STATE" ]; then
+    BATTERY_LOW="#[bg=#e06c75]#[fg=#2a2f39]"
+    BATTERY_MED="#[bg=#e5c07b]#[fg=#2a2f39]"
+    BATTERY_HIGH="#[bg=#98c379]#[fg=#2a2f39]"
+    PLUGGED_IN="#[bg=#fafafa]#[fg=#383a42]"
+
+    case $PERCENTAGE in
+      100%|9[0-9]%|8[0-9]%|7[0-9]%) COLOR="$BATTERY_HIGH"
+        ;;
+
+      6[0-9]%|5[0-9]%|4[0-9]%|3[0-9]%) COLOR="$BATTERY_MED"
+        ;;
+
+      2[0-9]%|1[0-9]%|[0-9]%) COLOR="$BATTERY_LOW"
+        ;;
+    esac
+
+    printf "%s " "$COLOR $PERCENTAGE $STATE #[default]"
   fi
 }
 
@@ -45,15 +59,13 @@ function date_time() {
 }
 
 function main() {
-  bar
+  test
   battery
 
   if type "warp-cli" &> /dev/null; then
-    bar
     warp_status
   fi
 
-  bar
   date_time
 }
 
